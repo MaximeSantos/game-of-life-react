@@ -1,23 +1,28 @@
 body {
+  background-color: #e2e2e2;
+  color: #333333  ;
+}
+
+.container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 
 .board {
-  width: 204px;
-  height: 100%;
-  background-color: black;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  gap: 1px;
-  margin: auto;
-  padding: 0;
-  border: 1px solid black;
+  background-color: #333333;
+  border: 1px solid #333333;
+  margin-bottom: 1rem;
 }
 
 .cell {
-  background-color: green;
+  background-color: #e6e6e6;
   max-width: 40px;
   max-height: 40px;
   width: 40px;
   height: 40px;
+}
+
+.active {
+  background-color: #48534b;
 }
