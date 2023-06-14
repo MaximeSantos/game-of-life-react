@@ -1,5 +1,5 @@
 body {
-  background-color: #e2e2e2;
+  background-color: #f9f0f2;
   color: #333333  ;
 }
 
@@ -13,6 +13,11 @@ body {
   background-color: #333333;
   border: 1px solid #333333;
   margin-bottom: 1rem;
+}
+
+.row {
+  display: flex;
+  gap: 1px;
 }
 
 .cell {
