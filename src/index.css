@@ -1,7 +1,25 @@
 body {
-  background-color: #f9f0f2;
+  background-color: #1f1d1f;
   color: #333333  ;
 }
+
+h1 {
+  margin: 0 0 1rem 0;
+  color: #cecbce;
+}
+
+a {
+  color: #cecbce;
+}
+a:hover {
+  color: blue;
+}
+
+button {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
 
 .container {
   display: flex;
@@ -10,8 +28,8 @@ body {
 }
 
 .board {
-  background-color: #333333;
-  border: 1px solid #333333;
+  max-height: 100%;
+  background-color: #6f6d67;
   margin-bottom: 1rem;
 }
 
@@ -21,13 +39,11 @@ body {
 }
 
 .cell {
-  background-color: #e6e6e6;
-  max-width: 40px;
-  max-height: 40px;
-  width: 40px;
-  height: 40px;
+  background-color: #b9b5b9;
+  width: 20px;
+  height: 20px;
 }
 
 .active {
-  background-color: #48534b;
+  background-color: #6f676d;
 }

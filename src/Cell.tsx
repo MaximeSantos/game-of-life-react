@@ -1,20 +1,23 @@
-// import { useState } from 'react';
+import React from 'react';
 
-const Cell = ({ boardCells, setBoardCells, rowIndex, cellIndex, currentCell }: any) => {
-  // const [active, setActive] = useState(false);
+interface Cell {
+  board: string[][];
+  setBoard: React.Dispatch<React.SetStateAction<string[][]>>;
+  rowIndex: number;
+  cellIndex: number;
+  currentCell: string;
+}
 
+const Cell: React.FC<Cell> = ({ board, setBoard, rowIndex, cellIndex, currentCell }) => {
   const handleClickCell = () => {
-    const newBoardCells = [...boardCells];
-
-    console.log('on passe dans le handleClickCell', newBoardCells);
+    const newBoardCells = [...board];
 
     if (newBoardCells[rowIndex][cellIndex] === '') {
       newBoardCells[rowIndex][cellIndex] = 'active';
     } else if (newBoardCells[rowIndex][cellIndex] === 'active') {
       newBoardCells[rowIndex][cellIndex] = '';
     }
-
-    setBoardCells(newBoardCells);
+    setBoard(newBoardCells);
   };
 
   return (
