@@ -1,6 +1,7 @@
 import { nbRows, nbCols } from "./emptyBoard";
 
 // TODO Replace board.length by correct row & col length
+// TODO Refactor this function
 export const countNbOfActiveNeighbours = (
   currentRow: number,
   currentCol: number,
@@ -49,7 +50,6 @@ export const countNbOfActiveNeighbours = (
     }
   }
 
-  console.log(currentRow, currentCol,`There are ${nbOfActiveNeighbours} neighbours`);
-
+  // console.log(currentRow, currentCol,`There are ${nbOfActiveNeighbours} neighbours`);
   return nbOfActiveNeighbours;
 };

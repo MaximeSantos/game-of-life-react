@@ -1,5 +1,5 @@
-export const nbRows = 5;
-export const nbCols = 5;
+export const nbRows = 40;
+export const nbCols = 40;
 
 export const createEmptyBoard = () => {
   const board = [];

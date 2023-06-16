@@ -23,7 +23,9 @@ const Cell: React.FC<Cell> = ({ board, setBoard, rowIndex, cellIndex, currentCel
   return (
     <div
       className={`cell ${currentCell == 'active' ? 'active' : ''}`}
-      onClick={handleClickCell}
+      onDragEnter={handleClickCell}
+      onDragOver={handleClickCell}
+      onDragLeave={handleClickCell}
     />
   );
 };

@@ -1,25 +1,30 @@
+:root {
+  --main-color: #1f1d1f;
+  --light-color: #d1d1d1;
+}
+
 body {
-  background-color: #1f1d1f;
-  color: #333333  ;
+  background-color: var(--main-color);
 }
 
 h1 {
   margin: 0 0 1rem 0;
-  color: #cecbce;
+  color: var(--light-color);
 }
 
 a {
-  color: #cecbce;
+  color: var(--light-color);
 }
 a:hover {
-  color: blue;
+  color: rgb(57, 57, 223);
 }
 
 button {
   font-size: 1.5rem;
   margin-right: 1rem;
+  background-color: var(--light-color);
+  color: var(--main-color)
 }
-
 
 .container {
   display: flex;
@@ -29,7 +34,7 @@ button {
 
 .board {
   max-height: 100%;
-  background-color: #6f6d67;
+  background-color: var(--main-color);
   margin-bottom: 1rem;
 }
 
@@ -39,11 +44,11 @@ button {
 }
 
 .cell {
-  background-color: #b9b5b9;
+  background-color: var(--light-color);
   width: 20px;
   height: 20px;
 }
 
 .active {
-  background-color: #6f676d;
+  background-color: var(--main-color);
 }

@@ -19,9 +19,6 @@ https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 5. Make the app refresh on a timer
 6. 
 */
-// TODO Currently the game logic is not right since we only made a shallow clone of our board.
-// TODO We probably needs to make a deep clone to pass to our countNbOfActiveNeighbours()
-// TODO (or at least make sur the board we pass dont use the same reference as our state)
 
 function App() {
   const [isRunning, setIsRunning] = useState(false);
@@ -47,51 +44,41 @@ function App() {
   useEffect(() => {
     if (isRunning) {
       const running = setInterval(() => {
-        // console.log("On passe dans l'intervalle chaque seconde");
-        const newBoard = [...board];
+        // we need to make a proper copy of the board to avoid any reference
+        // this is a hacky way of doing a "deep" clone of the second level of arrays
+        const copyOfBoard = board.map((row) => [...row]);
 
+        // we go through each row, and each cell
+        // comparing the state of the cell and its neighbour with the rules
         board.forEach((row, rowIndex) => {
-          // console.log('Row number', rowIndex, row);
           row.forEach((cell, cellIndex) => {
             // - If active cell does not have exactly 2 or 3 active neighbours - it becomes inactive
+            const nbOfActiveNeighbours = countNbOfActiveNeighbours(
+              rowIndex,
+              cellIndex,
+              board
+            );
             if (cell === 'active') {
-              // console.log('current cell is active');
-
-              // count nbOfActiveNeigbours
-              const nbOfActiveNeighbours = countNbOfActiveNeighbours(
-                rowIndex,
-                cellIndex,
-                board
-              );
-
               // Becomes inactive if nbOfActiveNeighbours is not 2 or 3
               if (nbOfActiveNeighbours !== 2 && nbOfActiveNeighbours !== 3) {
-                newBoard[rowIndex][cellIndex] = '';
+                copyOfBoard[rowIndex][cellIndex] = '';
               }
             } else {
-              // - If inactive cell has 3 active neighbours - it becomes active
-              // count nbOfActiveNeigbours
-              const nbOfActiveNeighbours = countNbOfActiveNeighbours(
-                rowIndex,
-                cellIndex,
-                board
-              );
-
-              // Becomes active if nbOfActiveNeighbours is exactly 3
+              // If inactive cell has exactly 3 active neighbours - it becomes active
               if (nbOfActiveNeighbours === 3) {
-                newBoard[rowIndex][cellIndex] = 'active';
+                copyOfBoard[rowIndex][cellIndex] = 'active';
               }
             }
           });
 
           // TODO make it so the app stops if there are no changes accross two renders
-          // if (newBoard == board) {
-          //   // console.log('STOP');
-          //   setIsRunning(false);
-          // }
+          if (copyOfBoard == board) {
+            console.log('STOP');
+            // setIsRunning(false);
+          }
 
           // new state
-          setBoard(newBoard);
+          setBoard(copyOfBoard);
         });
       }, 500);
       return () => clearInterval(running);
