@@ -23,6 +23,7 @@ https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 function App() {
   const [isRunning, setIsRunning] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
+  const [startDraggingOn, setStartDraggingOn] = useState('');
   const [board, setBoard] = useState(createEmptyBoard);
 
   // creates a list of JSX elements according to the array stored in the board state
@@ -36,6 +37,7 @@ function App() {
           cellIndex={cellIndex}
           currentCell={currentCell}
           isDragging={isDragging}
+          startDraggingOn={startDraggingOn}
           key={cellIndex}
         />
       ))}
@@ -99,6 +101,18 @@ function App() {
     return () => document.removeEventListener('keydown', handleRunning);
   }, [isRunning]);
 
+  const handleStartDragging = (e: React.MouseEvent<HTMLDivElement>): void => {
+    // gets us a list of classes for our cell
+    const arrayOfClassName = (e.target as HTMLDivElement).className.split(' ');
+    // checks if the cell clicked is active or not, and set state accordingly
+    if (arrayOfClassName[1] === 'active') {
+      setStartDraggingOn('active');
+    } else if (arrayOfClassName[1] === '') {
+      setStartDraggingOn('');
+    }
+    setIsDragging(true);
+  };
+
   return (
     <div className="container" onDragStart={(e) => e.preventDefault()}>
       <h1>
@@ -114,7 +128,7 @@ function App() {
           display: 'grid',
           gridTemplateRows: `repeat(${nbRows}, 1fr)`,
         }}
-        onMouseDown={() => setIsDragging(true)}
+        onMouseDown={handleStartDragging}
         onMouseUp={() => setIsDragging(false)}
       >
         {listOfCells}

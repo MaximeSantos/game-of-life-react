@@ -23,7 +23,7 @@ button {
   font-size: 1.5rem;
   margin-right: 1rem;
   background-color: var(--light-color);
-  color: var(--main-color)
+  color: var(--main-color);
 }
 
 .container {
@@ -33,21 +33,20 @@ button {
 }
 
 .board {
-  max-height: 100%;
-  background-color: var(--main-color);
   margin-bottom: 1rem;
-  gap: 1px;
 }
 
 .row {
   display: flex;
-  gap: 1px;
 }
 
 .cell {
   background-color: var(--light-color);
   width: 20px;
   height: 20px;
+  /* Allows us to keep a 1px border between cell whilst avoiding the dreaded gap */
+  border: 1px solid var(--main-color);
+  margin: -1px 0 0 -1px;
 }
 
 .active {
