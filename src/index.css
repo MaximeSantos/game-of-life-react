@@ -36,6 +36,7 @@ button {
   max-height: 100%;
   background-color: var(--main-color);
   margin-bottom: 1rem;
+  gap: 1px;
 }
 
 .row {

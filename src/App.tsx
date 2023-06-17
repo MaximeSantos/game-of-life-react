@@ -22,6 +22,7 @@ https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 
 function App() {
   const [isRunning, setIsRunning] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
   const [board, setBoard] = useState(createEmptyBoard);
 
   // creates a list of JSX elements according to the array stored in the board state
@@ -34,6 +35,7 @@ function App() {
           rowIndex={rowIndex}
           cellIndex={cellIndex}
           currentCell={currentCell}
+          isDragging={isDragging}
           key={cellIndex}
         />
       ))}
@@ -98,7 +100,7 @@ function App() {
   }, [isRunning]);
 
   return (
-    <div className="container">
+    <div className="container" onDragStart={(e) => e.preventDefault()}>
       <h1>
         <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">
           Conway's Game of Life
@@ -111,8 +113,9 @@ function App() {
         style={{
           display: 'grid',
           gridTemplateRows: `repeat(${nbRows}, 1fr)`,
-          gap: '1px',
         }}
+        onMouseDown={() => setIsDragging(true)}
+        onMouseUp={() => setIsDragging(false)}
       >
         {listOfCells}
       </div>
