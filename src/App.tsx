@@ -77,14 +77,14 @@ function App() {
 
           // TODO make it so the app stops if there are no changes accross two renders
           if (copyOfBoard == board) {
-            console.log('STOP');
+            // console.log('STOP');
             // setIsRunning(false);
           }
 
           // new state
           setBoard(copyOfBoard);
         });
-      }, 500);
+      }, 300);
       return () => clearInterval(running);
     }
   }, [isRunning, board]);
