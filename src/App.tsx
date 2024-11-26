@@ -116,7 +116,7 @@ function App() {
   return (
     <div className="container" onDragStart={(e) => e.preventDefault()}>
       <h1>
-        <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">
+        <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank">
           Conway's Game of Life
         </a>
         &nbsp;in React
